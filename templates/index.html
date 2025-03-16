@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+<!--Don't forget your import here-->
+{% block title %}Flood Prediction Model{% endblock %}
+{% from 'bootstrap5/form.html'  import render_form %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <div class="row mb-3 text-center">
+            
+            <h1>Flood Prediction Model</h1>
+            {% if is_ %}
+            <div class="col-6 themed-grid-col row mb-3 text-center">
+                    {{ render_form(form, novalidate=True) }}
+            </div>
+            <div class="col-6 themed-grid-col">
+                <h4>{{response}}</h4>
+            </div>
+
+            {% else %}
+            <div class="col-6 themed-grid-col">
+                    {{ render_form(form, novalidate=True) }}
+            </div>
+            <div class="col-6 themed-grid-col text-center" style="padding-top: 10%;">
+                <h2>⚠️ FLOOD WARNING ⚠️
+
+                    Region: Puducherry and surrounding areas
+                    Risk Level: High Risk
+                    Expected Impact: Rising water levels in low-lying areas within the next 3 hours.
+
+                    ❗ Actions to Take:
+                    - Move to higher ground immediately.
+                    - Avoid crossing flooded roads or rivers.
+                    - Keep emergency kits ready.
+
+                    For updates, contact the emergency helpline: 112.
+                    Stay safe and alert! Lakhs</h2>
+            </div>
+            {% endif %}
+          </div>
+    </div>
+  </div>
+
+
+  {% endblock %}
