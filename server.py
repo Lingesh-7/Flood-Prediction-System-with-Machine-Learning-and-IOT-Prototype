@@ -44,29 +44,16 @@ def estimate_price():
         if response==1:
             cilent=Client(account_sid,auth_token)
             message=cilent.messages.create(
-                from_=f"{num}",
-                to=f"{tonum}",
-                body=""" FLOOD WARNING 
-
-                    Region: Puducherry and surrounding areas
-                    Risk Level: High Risk
-                    Expected Impact: Rising water levels in low-lying areas within the next 3 hours.
-
-                     Actions to Take:
-                    - Move to higher ground immediately.
-                    - Avoid crossing flooded roads or rivers.
-                    - Keep emergency kits ready.
-
-                    For updates, contact the emergency helpline: 112.
-                    Stay safe and alert!"""
-                )
+                from_="+12673949333",
+                to="+917397527233",
+                body="""\n\nFLOOD WARNING\n\nRegion: Puducherry and surrounding areas\nRisk Level: High Risk\nExpected Impact: Rising water levels in low-lying areas within the next 3 hours.\nActions to Take:\n    - Move to higher ground immediately.\n    - Avoid crossing flooded roads or rivers.\n    - Keep emergency kits ready.\nFor updates, contact the emergency helpline: 112.\nStay safe and alert!""" )
             print(message.status)
 
             with smtplib.SMTP('smtp.gmail.com') as c:
                 c.starttls()
                 c.login(user=from_email,password=password)
                 for email in to_emails:
-                    c.sendmail(from_addr=from_email,to_addrs=email,msg="""Subject: FLOOD WARNING \n\nRegion: Puducherry and surrounding areas
+                    c.sendmail(from_addr=from_email,to_addrs=f'{email}',msg="""Subject: FLOOD WARNING \n\nRegion: Puducherry and surrounding areas
                     Risk Level: High Risk
                     Expected Impact: Rising water levels in low-lying areas within the next 3 hours.
 
